@@ -1,2 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿
+using Hangman;
+
+
+foreach (LoadWords line in LoadWords.TXTfileToList())
+{
+    Console.WriteLine(line.Country);
+}
