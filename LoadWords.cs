@@ -20,7 +20,7 @@ namespace Hangman
             foreach (var line in stringList)
             {
                 LoadWords newWord = new LoadWords();
-                string[] splittedWords = line.Split('|');
+                string[] splittedWords = line.Split(" | ");
 
                 newWord.CapitalCity = splittedWords[0];
                 newWord.Country = splittedWords[1];

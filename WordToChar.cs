@@ -8,9 +8,10 @@ namespace Hangman
 {
     internal class WordToChar
     {
+
         public static List<char> ConvertStringToChar()
         {
-            string word = DrawWord.wordToGuess().CapitalCity;
+            string word = DrawWord.wordToGuess().CapitalCity.ToUpper();
             List<char> characters = new List<char>();
             characters.AddRange(word);
             return characters;

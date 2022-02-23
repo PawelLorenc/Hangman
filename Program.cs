@@ -1,8 +1,14 @@
 ﻿
 using Hangman;
 
+List<char> list = new List<char>();
 
-foreach (LoadWords line in LoadWords.TXTfileToList())
+for (int i = 0; i < 30; i++)
 {
-    Console.WriteLine(line.Country);
+    list = CoverAndUncoverLetters.LettersToUncover();
+    for (int y = 0; y < list.Count; y++)
+    {
+        Console.Write(list[y]);
+    }
+    Console.WriteLine();
 }
