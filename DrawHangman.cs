@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Hangman
 {
     internal class DrawHangman
     {
 
-        public static void Draw(int chancesLeft)
+        public void Draw(int chancesLeft)
         {
             switch(chancesLeft) {
-                case 5:
+                case 0:
                     Console.WriteLine("\n" +
                     "  ____   \n" +
                     " |    |  \n" +
@@ -21,7 +18,7 @@ namespace Hangman
                     " |       \n" +
                     "_|___    \n");
                     break;
-                case 4:
+                case 1:
                     Console.WriteLine("\n" +
                     "  ____   \n" +
                     " |    |  \n" +
@@ -30,7 +27,7 @@ namespace Hangman
                     " |       \n" +
                     "_|___    \n");                    
                     break;
-                case 3:
+                case 2:
                     Console.WriteLine("\n" +
                     "  ____  \n " +
                     " |    | \n " +
@@ -38,7 +35,7 @@ namespace Hangman
                     " |      \n " +
                     "_|___   \n ");
                     break;
-                case 2:
+                case 3:
                     Console.WriteLine("\n" +
                     "  ____  \n " +
                     " |    | \n " +
@@ -46,7 +43,7 @@ namespace Hangman
                     " |    | \n " +
                     "_|___   \n ");
                     break;
-                case 1:
+                case 4:
                     Console.WriteLine("\n" +
                     "  ____  \n " +
                     " |    | \n " +
@@ -55,7 +52,14 @@ namespace Hangman
                     "_|___/ \\n " +
                     "THE GAME IS OVER!");
                     break;
-
+                case -1:
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    break;
             }
 
         }

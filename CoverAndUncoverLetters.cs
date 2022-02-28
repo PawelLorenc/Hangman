@@ -8,64 +8,69 @@ namespace Hangman
 {
     internal class CoverAndUncoverLetters
     {
+        List<char> charToGuess;
+        List<char> charToUncover = new List<char>();
+        List<char> guessedChars = new List<char>();
 
-        public static List<char> guessedChars = new List<char>();
-        public static List<char> charToGuess = new List<char>(WordToChar.ConvertStringToChar());
-        public static List<char> charToUncover = new List<char>();
-        private static bool flag = true;
-
-
-
-        public static List<char> LettersToUncover()
+        public CoverAndUncoverLetters(string wordToGuess)
         {
-            if (flag)
-            {
-                CoverLetters();
-                flag = false;
-            }
-
-            guessedChars.Add(CheckChar());
-            for (int i = 0; i < charToGuess.Count; i++)
-            {
-                for (int y = 0; y < guessedChars.Count; y++)
-                {
-                    if (charToGuess[i].Equals(guessedChars[y]))
-                    {
-                        charToUncover[i] = guessedChars[y];
-                    }
-                }
-            }
-            return charToUncover;
+            charToGuess = wordToGuess.ToCharArray().ToList();
+            CoverLetters();
         }
 
-        
-
-
-        private static char CheckChar()
+        private void CoverLetters()
         {
-            int lenght;
-            int asc;
-            char ch;
-            do
-            {
-                string charToCheck = Console.ReadLine().ToUpper();
-                lenght = charToCheck.Length;
-                ch = charToCheck[0];
-                asc = (int)charToCheck[0];
-                if (lenght != 1 || (asc < 65 || asc > 90))
-                {
-                    Console.WriteLine("Provided character isn't correct");
-                }
-            } while (lenght != 1 || (asc < 65 || asc > 90));
-            return ch;
-        }
-
-        private static void CoverLetters()
-        {
-             foreach (char ch in charToGuess)
+            foreach (char ch in charToGuess)
             {
                 charToUncover.Add('_');
             }
+        }
+
+        public List<char>  returnGuessedChar()
+        {
+            
+                return guessedChars;
+            
+        }
+
+        public bool Guess(char letter)
+        {
+            bool isCorrect = false;
+            guessedChars.Add(letter);
+            for (int i = 0; i < charToGuess.Count; i++)
+            {
+                if (letter.Equals(charToGuess[i]))
+                {
+                    charToUncover[i] = letter;
+                    isCorrect = true;
+                }
+            }
+            if (isCorrect)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public List<char> LettersToUncover()
+        {
+            return charToUncover;
+        }
+
+        public bool GuessWholeWord(string word)
+        {
+            char[] stringChar = word.ToCharArray();
+            for (int i = 0; i < charToGuess.Count(); i++)
+            {
+                if (!stringChar[i].Equals(charToGuess[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

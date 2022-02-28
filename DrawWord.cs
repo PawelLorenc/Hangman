@@ -8,18 +8,14 @@ namespace Hangman
 {
     internal class DrawWord
     {
-
-        private static int DrawNumber()
+        public static Capital CapitalToGuess()
         {
-            Random random = new Random();
-            int randomNumberToDraw = random.Next(0, LoadWords.TXTfileToList().Count);
-            return randomNumberToDraw;
+            LoadWords loadWords = new LoadWords();
+            List<Capital> capitals = loadWords.LoadCapitalsFromFile();
+            Random random = new Random();           
+            return capitals.ElementAt(random.Next(0, capitals.Count));
         }
-
-        public static LoadWords wordToGuess()
-        {
-           return LoadWords.TXTfileToList().ElementAt(DrawNumber());
-        }       
+        
 
     }
 }

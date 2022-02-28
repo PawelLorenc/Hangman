@@ -4,30 +4,26 @@ namespace Hangman
 {
     internal class LoadWords
     {
-        public string CapitalCity { get; private set; }
-        public string Country { get; private set; }
 
-        public static List<LoadWords> TXTfileToList()
+        public List<Capital> LoadCapitalsFromFile()
         {
-            List<LoadWords> listOfWords = new List<LoadWords>();
+            List<Capital> listOfCapitals = new List<Capital>();
 
-            string filePath = Hangman.Resource.countries_and_capitals;
+            string filePath = Resource.countries_and_capitals;
 
-            List<string> stringList = new List<string>();
-
-            stringList = filePath.Split("\r\n").ToList();
+            List<string> stringList = filePath.Split("\r\n").ToList();
 
             foreach (var line in stringList)
             {
-                LoadWords newWord = new LoadWords();
+                Capital capitals = new Capital();
                 string[] splittedWords = line.Split(" | ");
 
-                newWord.CapitalCity = splittedWords[0];
-                newWord.Country = splittedWords[1];
+                capitals.CapitalCity = splittedWords[0];
+                capitals.Country = splittedWords[1];
 
-                listOfWords.Add(newWord);
+                listOfCapitals.Add(capitals);
             }
-            return listOfWords;      
+            return listOfCapitals;      
         }
     }
 }
